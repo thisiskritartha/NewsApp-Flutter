@@ -21,7 +21,7 @@ List<SliderModel> getSliders() {
   SliderModel model4 = SliderModel();
   model4.image = "assets/logo.png";
   model4.name =
-      "This is the new title for first image. This is the new title for first image. This is the new title for first image.";
+      "This is the new title for first image. This is the new title for first image. This is the new title for first image. ";
   sliders.add(model4);
 
   return sliders;

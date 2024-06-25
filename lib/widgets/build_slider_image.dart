@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 Widget buildSliderImage(String image, int index, String name) {
   return Container(
@@ -8,10 +10,11 @@ Widget buildSliderImage(String image, int index, String name) {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(12.r),
-          child: Image.asset(
-            image,
-            fit: BoxFit.cover,
+          child: CachedNetworkImage(
+            imageUrl: image,
             width: double.infinity,
+            height: 200.h,
+            fit: BoxFit.cover,
           ),
         ),
         Container(
@@ -39,6 +42,27 @@ Widget buildSliderImage(String image, int index, String name) {
           ),
         )
       ],
+    ),
+  );
+}
+
+Widget buildShimmerPlaceholder() {
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: 6.w),
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(12.r),
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.grey[100]!,
+        child: Container(
+          width: double.infinity,
+          height: 200.h,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+        ),
+      ),
     ),
   );
 }
