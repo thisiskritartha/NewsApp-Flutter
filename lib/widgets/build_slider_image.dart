@@ -10,12 +10,19 @@ Widget buildSliderImage(String image, int index, String name) {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(12.r),
-          child: CachedNetworkImage(
-            imageUrl: image,
-            width: double.infinity,
-            height: 200.h,
-            fit: BoxFit.cover,
-          ),
+          child: image != "assets/default.jpg"
+              ? CachedNetworkImage(
+                  imageUrl: image,
+                  width: double.infinity,
+                  height: 200.h,
+                  fit: BoxFit.cover,
+                )
+              : Image.asset(
+                  image,
+                  width: double.infinity,
+                  height: 200.h,
+                  fit: BoxFit.cover,
+                ),
         ),
         Container(
           height: 200.h,
