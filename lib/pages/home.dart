@@ -270,14 +270,14 @@ class Home extends StatelessWidget {
                                           ? CachedNetworkImage(
                                               imageUrl:
                                                   controller.trendingArticleList!.articles[index].urlToImage!,
-                                              // height: 120.h,
-                                              // width: 120.w,
+                                              height: 120.h,
+                                              width: 120.w,
                                               fit: BoxFit.cover,
                                             )
                                           : Image.asset(
                                               "assets/default.jpg",
-                                              // height: 120.h,
-                                              // width: 120.w,
+                                              height: 120.h,
+                                              width: 120.w,
                                               fit: BoxFit.cover,
                                             ),
                                     ),

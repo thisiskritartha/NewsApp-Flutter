@@ -19,6 +19,7 @@ class HomeController extends GetxController {
   RxBool isTrendingLoaded = false.obs;
   RxBool isBreakingLoaded = false.obs;
 
+  // Fetches breaking news articles
   Future<void> getBreakingArticle() async {
     try {
       final response = await getArticles(breakingUrl);
@@ -63,6 +64,7 @@ class HomeController extends GetxController {
     }
   }
 
+  // Fetches Trending new articles
   Future<void> getTrendingArticle() async {
     try {
       final response = await getArticles(trendingUrl);
@@ -107,6 +109,7 @@ class HomeController extends GetxController {
     }
   }
 
+  // Fetches all the breaking news
   Future<void> viewAllBreakingNews() async {
     try {
       final response = await getArticles(viewAllBreaking);
@@ -150,6 +153,7 @@ class HomeController extends GetxController {
     }
   }
 
+  // Fetches all the trending news
   Future<void> viewAllTrendingNews() async {
     try {
       final response = await getArticles(viewAllTrending);
@@ -193,18 +197,21 @@ class HomeController extends GetxController {
     }
   }
 
+  // Add the article to favorite list
   void addToCart(Article article) {
     if (!favList.contains(article)) {
       favList.add(article);
     }
   }
 
+  // Remove the article from the favorite list
   void removeFromCart(Article article) {
     if (favList.contains(article)) {
       favList.remove(article);
     }
   }
 
+  // To clear all the favorite list article
   void removeAll() {
     favList.clear();
     isTabletView.value

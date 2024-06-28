@@ -32,42 +32,44 @@ class FavoritePage extends StatelessWidget {
           ),
         ),
         actions: [
-          controller.favList.isNotEmpty
-              ? IconButton(
-                  onPressed: () {
-                    Get.defaultDialog(
-                      title: "Clear the Favorite List",
-                      titlePadding: EdgeInsets.only(top: 16.h),
-                      middleText: "Are you sure you want to clear the favorite list?",
-                      backgroundColor: Colors.white,
-                      contentPadding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 16.h),
-                      titleStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18.sp,
-                      ),
-                      middleTextStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                      ),
-                      textCancel: "No",
-                      textConfirm: "Yes",
-                      confirmTextColor: Colors.white,
-                      cancelTextColor: Colors.indigo,
-                      buttonColor: Colors.indigo,
-                      onCancel: () {},
-                      onConfirm: () {
-                        controller.removeAll();
-                      },
-                    );
-                  },
-                  icon: Icon(
-                    Icons.delete_forever,
-                    size: 24.r,
-                  ),
-                )
-              : const SizedBox.shrink(),
+          Obx(
+            () => controller.favList.isNotEmpty
+                ? IconButton(
+                    onPressed: () {
+                      Get.defaultDialog(
+                        title: "Clear the Favorite List",
+                        titlePadding: EdgeInsets.only(top: 16.h),
+                        middleText: "Are you sure you want to clear the favorite list?",
+                        backgroundColor: Colors.white,
+                        contentPadding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 16.h),
+                        titleStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18.sp,
+                        ),
+                        middleTextStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16.sp,
+                        ),
+                        textCancel: "No",
+                        textConfirm: "Yes",
+                        confirmTextColor: Colors.white,
+                        cancelTextColor: Colors.indigo,
+                        buttonColor: Colors.indigo,
+                        onCancel: () {},
+                        onConfirm: () {
+                          controller.removeAll();
+                        },
+                      );
+                    },
+                    icon: Icon(
+                      Icons.delete_forever,
+                      size: 24.r,
+                    ),
+                  )
+                : const SizedBox.shrink(),
+          ),
         ],
       ),
       body: Obx(
