@@ -69,3 +69,71 @@ Widget buildTrendingListShimmer() {
     ),
   );
 }
+
+Widget buildTrendingListShimmerTablet() {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 6.0.w, vertical: 6.h),
+    child: Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Material(
+        elevation: 6.0,
+        borderRadius: BorderRadius.circular(16.r),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 4.0.w, vertical: 6.0.h),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16.r),
+                child: Container(
+                  color: Colors.white,
+                  height: 320.h,
+                  width: 120.w,
+                ),
+              ),
+              SizedBox(width: 6.w),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      color: Colors.white,
+                      height: 20.h,
+                      width: double.infinity,
+                    ),
+                    SizedBox(height: 6.h),
+                    Container(
+                      color: Colors.white,
+                      height: 20.h,
+                      width: double.infinity,
+                    ),
+                    SizedBox(height: 4.h),
+                    Container(
+                      color: Colors.white,
+                      height: 20.h,
+                      width: double.infinity,
+                    ),
+                    SizedBox(height: 4.h),
+                    Container(
+                      color: Colors.white,
+                      height: 20.h,
+                      width: double.infinity,
+                    ),
+                    SizedBox(height: 4.h),
+                    Container(
+                      color: Colors.white,
+                      height: 20.h,
+                      width: double.infinity,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}

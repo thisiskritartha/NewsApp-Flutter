@@ -23,8 +23,7 @@ class DetailedPage extends StatelessWidget {
     required this.article,
   });
 
-  @override
-  Widget build(BuildContext context) {
+  Widget buildPhoneView() {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -96,5 +95,88 @@ class DetailedPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget buildTabletView() {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_new,
+            size: 24.0.r,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
+        title: Text(
+          'Details',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.indigo,
+            fontSize: 12.sp,
+          ),
+        ),
+        actions: [
+          FavoriteIcon(article: article),
+          SizedBox(width: 6.0.w),
+        ],
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 6.0.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16.0.r),
+                child: imageUrl != "assets/default.jpg"
+                    ? CachedNetworkImage(
+                        imageUrl: imageUrl!,
+                        fit: BoxFit.cover,
+                        height: 400.0.h,
+                        width: double.infinity,
+                      )
+                    : Image.asset(
+                        "assets/default.jpg",
+                        fit: BoxFit.cover,
+                        height: 400.0.h,
+                        width: double.infinity,
+                      ),
+              ),
+              SizedBox(height: 12.h),
+              Text(
+                title!,
+                style: TextStyle(
+                  fontFamily: "Merriweather",
+                  fontWeight: FontWeight.w800,
+                  fontSize: 11.sp,
+                ),
+              ),
+              SizedBox(height: 8.h),
+              Text(
+                description!,
+                style: TextStyle(
+                  fontFamily: "Merriweather",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 9.sp,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    bool isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+    controller.isTabletView.value = isTablet;
+
+    return isTablet ? buildTabletView() : buildPhoneView();
   }
 }

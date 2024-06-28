@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:news_app/constants/string_constants.dart';
 import 'package:news_app/model/article_model.dart';
@@ -13,6 +14,7 @@ class HomeController extends GetxController {
   RxInt activeIndex = 0.obs;
   RxBool isFav = false.obs;
   var favList = <Article>[].obs;
+  RxBool isTabletView = false.obs;
 
   RxBool isTrendingLoaded = false.obs;
   RxBool isBreakingLoaded = false.obs;
@@ -25,14 +27,39 @@ class HomeController extends GetxController {
         breakingArticlesList = response;
       }
     } catch (e) {
-      Get.snackbar(
-        'Error fetching News article',
-        'Check your connection and try again.',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        duration: const Duration(seconds: 3),
-        snackPosition: SnackPosition.TOP,
-      );
+      isTabletView.value
+          ? Get.snackbar(
+              'Error fetching News article',
+              'Check your connection and try again.',
+              titleText: Text(
+                "Error fetching News article",
+                style: TextStyle(
+                  fontSize: 8.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              messageText: Text(
+                'Check your connection and try again.',
+                style: TextStyle(
+                  fontSize: 7.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              snackPosition: SnackPosition.TOP,
+            )
+          : Get.snackbar(
+              'Error fetching News article',
+              'Check your connection and try again.',
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              snackPosition: SnackPosition.TOP,
+            );
     }
   }
 
@@ -44,14 +71,39 @@ class HomeController extends GetxController {
         trendingArticleList = response;
       }
     } catch (e) {
-      Get.snackbar(
-        'Error fetching News article',
-        'Check your connection and try again.',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        duration: const Duration(seconds: 3),
-        snackPosition: SnackPosition.TOP,
-      );
+      isTabletView.value
+          ? Get.snackbar(
+              'Error fetching News article',
+              'Check your connection and try again.',
+              titleText: Text(
+                "Error fetching News article",
+                style: TextStyle(
+                  fontSize: 8.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              messageText: Text(
+                'Check your connection and try again.',
+                style: TextStyle(
+                  fontSize: 7.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              snackPosition: SnackPosition.TOP,
+            )
+          : Get.snackbar(
+              'Error fetching News article',
+              'Check your connection and try again.',
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              snackPosition: SnackPosition.TOP,
+            );
     }
   }
 
@@ -62,14 +114,39 @@ class HomeController extends GetxController {
         viewAllList = response;
       }
     } catch (e) {
-      Get.snackbar(
-        'Error fetching News article',
-        'Check your connection and try again.',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        duration: const Duration(seconds: 3),
-        snackPosition: SnackPosition.TOP,
-      );
+      isTabletView.value
+          ? Get.snackbar(
+              'Error fetching News article',
+              'Check your connection and try again.',
+              titleText: Text(
+                "Error fetching News article",
+                style: TextStyle(
+                  fontSize: 8.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              messageText: Text(
+                'Check your connection and try again.',
+                style: TextStyle(
+                  fontSize: 7.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              snackPosition: SnackPosition.TOP,
+            )
+          : Get.snackbar(
+              'Error fetching News article',
+              'Check your connection and try again.',
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              snackPosition: SnackPosition.TOP,
+            );
     }
   }
 
@@ -80,14 +157,39 @@ class HomeController extends GetxController {
         viewAllList = response;
       }
     } catch (e) {
-      Get.snackbar(
-        'Error fetching News article',
-        'Check your connection and try again.',
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        duration: const Duration(seconds: 3),
-        snackPosition: SnackPosition.TOP,
-      );
+      isTabletView.value
+          ? Get.snackbar(
+              'Error fetching News article',
+              'Check your connection and try again.',
+              titleText: Text(
+                "Error fetching News article",
+                style: TextStyle(
+                  fontSize: 8.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              messageText: Text(
+                'Check your connection and try again.',
+                style: TextStyle(
+                  fontSize: 7.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              snackPosition: SnackPosition.TOP,
+            )
+          : Get.snackbar(
+              'Error fetching News article',
+              'Check your connection and try again.',
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: const Duration(seconds: 3),
+              snackPosition: SnackPosition.TOP,
+            );
     }
   }
 
@@ -105,12 +207,35 @@ class HomeController extends GetxController {
 
   void removeAll() {
     favList.clear();
+    isTabletView.value
+        ? Get.snackbar(
+            'Clear All',
+            'The favorite list has been cleared.',
+            titleText: Text(
+              "Favorite List Cleared",
+              style: TextStyle(
+                fontSize: 8.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.indigo,
+              ),
+            ),
+            messageText: Text(
+              'The favorite list has been cleared.',
+              style: TextStyle(
+                fontSize: 7.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ),
+            ),
+            backgroundColor: Colors.white,
+            colorText: Colors.black,
+          )
+        : Get.snackbar(
+            'Clear All',
+            'The favorite list has been cleared.',
+            backgroundColor: Colors.white,
+            colorText: Colors.black,
+          );
     Get.offAll(Home());
-    Get.snackbar(
-      'Clear All',
-      'The favorite list has been cleared.',
-      backgroundColor: Colors.white,
-      colorText: Colors.black,
-    );
   }
 }
